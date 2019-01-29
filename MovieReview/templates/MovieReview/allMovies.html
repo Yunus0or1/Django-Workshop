@@ -1,0 +1,42 @@
+{% extends "MovieReview/layout.html" %}
+
+
+{% block content %}
+
+<div style="min-height:500px;">
+    <h1 style="text-align:center;">All Movies List Are Here</h1>
+    <div style="width:60%; margin: 0 auto;">
+
+        <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Movie Name</th>
+      <th scope="col">Movie Genre</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for movie in movies %}
+        <tr>
+          <th scope="row">{{ movie.movie_name }}</th>
+          <td>{{ movie.movie_genre }}</td>
+          <td>
+              <a href="{% url 'edit_movie' movie.id %}">
+                <button class="btn btn-info">Edit</button>
+              </a>
+              <a href="{% url 'delete_movie' movie.id %}">
+                <button class="btn btn-danger">Delete</button>
+              </a>
+          </td>
+        </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+{% endblock %}

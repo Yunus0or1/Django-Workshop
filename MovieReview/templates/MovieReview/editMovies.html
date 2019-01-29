@@ -1,0 +1,47 @@
+{% extends "MovieReview/layout.html" %}
+
+
+{% block content %}
+
+<div style="min-height:500px;">
+    <h1 style="text-align:center;">Movie Details Are Here</h1>
+    <div style="width:60%; margin: 0 auto;">
+
+
+        <form method="POST" enctype="multipart/form-data" action="{% url 'update_movie' movies.id %}">
+
+            {% csrf_token %}
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="movie_name" class="form-control"  aria-describedby="emailHelp" value="{{ movies.movie_name }}">
+
+          </div>
+          <div class="form-group">
+            <label fo>Genre</label>
+            <input type="text" name="movie_genre" class="form-control"  value="{{ movies.movie_genre }}">
+          </div>
+            <div class="form-group">
+            <label>Review</label>
+            <input type="text" name="movie_review" class="form-control"  aria-describedby="emailHelp" value="{{ movies.movie_review }}">
+
+          </div>
+          <div class="form-group">
+            <label fo>Release Date</label>
+            <input type="text" name="movie_release_date" class="form-control"  value="{{ movies.movie_release_date }}">
+          </div>
+            <div class="form-group">
+            <label>Details</label>
+            <input type="text" name="movie_desc" class="form-control"  aria-describedby="emailHelp" value="{{ movies.movie_desc }}">
+          </div>
+
+          <input type="hidden" value="{{ id }}">
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
